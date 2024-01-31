@@ -54,7 +54,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        // return "ciao";
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -62,7 +63,16 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+        $validated = $request->validated();
+
+        $newproject = new Project();
+        $newproject->fill($validated);
+        $newproject->update();
+
+        // $data = $request->all();
+        // $dati_validati = $this->validation($data);
+        // $project->update($dati_validati);
     }
 
     /**
@@ -70,6 +80,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route("admin.projects.index");
     }
 }

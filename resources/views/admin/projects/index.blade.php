@@ -9,8 +9,8 @@
                         <div class="card-header">{{ $project->title }}</div>
                         <div class="card-body">{{ $project->description }}</div>
                         <div class="buttons d-flex">
-                            <button type="button" class="btn btn-primary" href="{{route('admin.projects.show', $project->id)}}">Details</button>
-                            <button type="button" class="btn btn-success" href="{{route('admin.projects.edit', $project->id)}}">Edit</button>
+                            <a type="button" class="btn btn-primary" href="{{ route('admin.projects.show', $project->id) }}">Details</a>
+                            <a type="button" class="btn btn-success" href="{{ route('admin.projects.edit', $project->id) }}">Edit</a>
                             <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
